@@ -3,14 +3,16 @@
   "type": "module",
   "engines": {
     "node": ">=16.0.0",
-    "pnpm": ">=7.0.0",
-    "npm": "please use pnpm"
+    "pnpm": ">=7.0.0"
   },
+  "workspaces": [
+    "src/frontend"
+  ],
   "scripts": {
-    "build": "pnpm -r --if-present run build",
-    "typecheck": "pnpm -r --if-present run typecheck",
-    "check": "pnpm -r --if-present run check",
-    "fix": "pnpm -r --if-present run fix"
+    "build": "pnpm -r --if-present run build || npm run build --workspaces --if-present",
+    "typecheck": "pnpm -r --if-present run typecheck || npm run typecheck --workspaces --if-present",
+    "check": "pnpm -r --if-present run check || npm run check --workspaces --if-present",
+    "fix": "pnpm -r --if-present run fix || npm run fix --workspaces --if-present"
   },
   "devDependencies": {
     "sharp": "^0.34.4"
